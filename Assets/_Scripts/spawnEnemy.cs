@@ -22,16 +22,18 @@ public class spawnEnemy : MonoBehaviour
         foreach (Vector2Int room in spawnRooms)
         {
             spawnPosition = new Vector3(room.x, room.y, 0);
-            spawnPositionB = new Vector3(room.x, room.y, 0);
-            spawnPositionC = new Vector3(room.x, room.y, 0);
-            if (Random.Range(0,100) <= 9){
+           // spawnPositionB = new Vector3(room.x, room.y, 0);
+           // spawnPositionC = new Vector3(room.x, room.y, 0);
+            if (Random.Range(0,100) <= 2.5){
 
-                GameObject a = Instantiate(enemyPrefab) as GameObject;
-                a.transform.position = spawnPosition;
-                GameObject b = Instantiate(enemyPrefab) as GameObject;
-                b.transform.position = spawnPositionB;
-                GameObject c = Instantiate(enemyPrefab) as GameObject;
-                c.transform.position = spawnPositionC;
+                  GameObject a = Instantiate(enemyPrefab) as GameObject;
+                  a.transform.position = spawnPosition;
+                
+                
+               // GameObject b = Instantiate(enemyPrefab) as GameObject;
+              //  b.transform.position = spawnPositionB;
+               // GameObject c = Instantiate(enemyPrefab) as GameObject;
+               // c.transform.position = spawnPositionC;
             }
         }
     }

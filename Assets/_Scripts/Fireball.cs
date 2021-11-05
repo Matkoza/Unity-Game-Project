@@ -23,7 +23,8 @@ public class Fireball : MonoBehaviour
     {   
         if (other.tag == "Enemy"){
             Debug.Log("Hit");
-            Destroy(other.gameObject);
+            
+            other.gameObject.GetComponent<Enemy>().TakeDamage(20);
             Destroy(gameObject);
         }
     }

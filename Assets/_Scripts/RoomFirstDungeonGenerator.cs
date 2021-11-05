@@ -60,7 +60,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         for (int i = 0; i < roomsList.Count; i++)
         {
             var roomBounds = roomsList[i];
-            var roomCenter = nevi .gitignorew Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
+            var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
             var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
             foreach (var position in roomFloor)
             {

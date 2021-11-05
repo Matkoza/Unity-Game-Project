@@ -24,7 +24,7 @@ namespace Pathfinding {
 
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
-			target = GameObject.FindWithTag("Player").transform;
+			target = GameObject.FindWithTag("Player").GetComponent<Transform>();
 			sees = false;
 			
 			// Update the destination right before searching for a path as well.
@@ -44,7 +44,9 @@ namespace Pathfinding {
 			if(Vector2.Distance(transform.position, target.position) > targetRange) {
 				sees = false;
 				}
-			else if (target != null && ai != null && sees == true) ai.destination = target.position;
+			else if (target != null && ai != null && sees == true) {
+				ai.destination = target.position;
+			}
 
 			else {
 				sees = true;
