@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theRB: {fileID: 362017356749000976}
-  moveSpeed: 3
+  moveSpeed: 7.5
   maxLife: 2.5
