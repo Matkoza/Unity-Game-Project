@@ -24,7 +24,7 @@ public class spawnEnemy : MonoBehaviour
             spawnPosition = new Vector3(room.x, room.y, 0);
            // spawnPositionB = new Vector3(room.x, room.y, 0);
            // spawnPositionC = new Vector3(room.x, room.y, 0);
-            if (Random.Range(0,100) <= 0.1){
+            if (Random.Range(0,100) <= 0.5){
 
                   GameObject a = Instantiate(enemyPrefab) as GameObject;
                   a.transform.position = spawnPosition;

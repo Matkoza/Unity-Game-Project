@@ -42,7 +42,10 @@ public class Slimeball : MonoBehaviour
     {   
         if (other.tag == "Player"){
             
-            other.gameObject.GetComponent<Player>().TakeDamage(15);
+            other.gameObject.GetComponent<Player>().TakeDamage(5);
+            Destroy(gameObject);
+        }
+        if (other.tag == "Walls"){
             Destroy(gameObject);
         }
     }

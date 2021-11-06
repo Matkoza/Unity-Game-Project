@@ -27,6 +27,9 @@ public class Fireball : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().TakeDamage(20);
             Destroy(gameObject);
         }
+        else if (other.tag == "Walls"){
+            Destroy(gameObject);
+        }
     }
 }
 
