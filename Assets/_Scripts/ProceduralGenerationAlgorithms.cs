@@ -137,4 +137,20 @@ public static class Direction2D
     {
         return cardinalDirectionsList[UnityEngine.Random.Range(0, cardinalDirectionsList.Count)];
     }
+    public static List<Vector2Int> GetAllCardinalDirections(){
+        return cardinalDirectionsList;
+    }
+    public static Vector2Int GetUpDirection(){
+        return cardinalDirectionsList[0];
+    }
+    public static Vector2Int GetRightDirection(){
+        return cardinalDirectionsList[1];
+    }
+
+    public static Vector2Int GetDownDirection(){
+        return cardinalDirectionsList[2];
+    }
+    public static Vector2Int GetLeftDirection(){
+        return cardinalDirectionsList[3];
+    }
 }

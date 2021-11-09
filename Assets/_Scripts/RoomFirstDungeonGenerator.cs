@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +17,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private bool randomWalkRooms = false;
     public List<Vector2Int> startParam;
     public List<Vector2Int> allSpawnRooms;
+    public List<BoundsInt> boxBounds;
+    public List<Vector2Int> corridorDoors;
 
     protected override void RunProceduralGeneration()
     {
@@ -39,17 +41,23 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         startParam.Clear();
+        boxBounds.Clear();
+        corridorDoors.Clear();
         foreach (var room in roomsList)
         {
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
             startParam.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
+           // boxBounds.Add(room);
         }
         
 
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
+        foreach (Vector2Int corridor in corridors)
+        {
+            corridorDoors.Add(corridor);
+        }
         floor.UnionWith(corridors);
-
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
     }
@@ -60,6 +68,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         for (int i = 0; i < roomsList.Count; i++)
         {
             var roomBounds = roomsList[i];
+            boxBounds.Add(roomsList[i]);
             var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
             var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
             foreach (var position in roomFloor)
@@ -143,12 +152,12 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         
         foreach (var room in roomsList)
         {
-
             for (int col = offset; col < room.size.x - offset; col++)
             {
                 for (int row = offset; row < room.size.y - offset; row++)
                 {
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
+                    
                     floor.Add(position);
                 }
             }
@@ -162,5 +171,11 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         public List<Vector2Int> GetAllSpawnList(){
             allSpawnRooms = tilemapVisualizer.GetSpawnList();
             return allSpawnRooms;
+        }
+        public List<BoundsInt> GetBoxBounds(){
+            return boxBounds;
+        }
+        public List<Vector2Int> GetCorrodorDoors() {
+            return corridorDoors;
         }
 }

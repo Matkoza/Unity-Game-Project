@@ -266,7 +266,7 @@ MonoBehaviour:
   version: 1
   target: {fileID: 0}
   sees: 0
-  targetRange: 5
+  targetRange: 7.5
 --- !u!61 &1146637927343956760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 8793541494409356389}
   slimeBallPrefab: {fileID: 362017356749000977, guid: e80c6b9e4e3c6c340bdb29764663b239, type: 3}
-  targetRange: 5
+  targetRange: 7.5
   startTimeBtwShots: 1.5
   firePoint: {fileID: 0}
 --- !u!1 &4553653381311843313

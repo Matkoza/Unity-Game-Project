@@ -16,7 +16,8 @@ public class TilemapVisualizer : MonoBehaviour
         wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
-    {   spawnList.Clear();
+    {   
+        spawnList.Clear();
         PaintTiles(floorPositions, floorTilemap, floorTile);
     }
 
