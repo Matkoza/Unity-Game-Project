@@ -9,15 +9,22 @@ public class TilemapVisualizer : MonoBehaviour
     [SerializeField]
     private Tilemap floorTilemap, wallTilemap;
     public List<Vector2Int> spawnList;
+    public List<Vector2Int> leftWalls, rightWalls, upWalls, downWalls,leftCornerWalls, rightCornerWalls;
 
     [SerializeField]
-    private TileBase floorTile, wallTop, wallSideRight, wallSiderLeft, wallBottom, wallFull, 
+    public TileBase floorTile, wallTop, wallSideRight, wallSiderLeft, wallBottom, wallFull, 
         wallInnerCornerDownLeft, wallInnerCornerDownRight, 
         wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {   
         spawnList.Clear();
+        upWalls.Clear();
+        downWalls.Clear();
+        rightWalls.Clear();
+        leftWalls.Clear();
+        leftCornerWalls.Clear();
+        rightCornerWalls.Clear();
         PaintTiles(floorPositions, floorTilemap, floorTile);
     }
 
@@ -37,17 +44,21 @@ public class TilemapVisualizer : MonoBehaviour
         if (WallTypesHelper.wallTop.Contains(typeAsInt))
         {
             tile = wallTop;
+            upWalls.Add(position);
         }else if (WallTypesHelper.wallSideRight.Contains(typeAsInt))
         {
             tile = wallSideRight;
+            rightWalls.Add(position);
         }
         else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
         {
             tile = wallSiderLeft;
+            leftWalls.Add(position);
         }
         else if (WallTypesHelper.wallBottm.Contains(typeAsInt))
         {
             tile = wallBottom;
+            downWalls.Add(position);
         }
         else if (WallTypesHelper.wallFull.Contains(typeAsInt))
         {
@@ -78,10 +89,12 @@ public class TilemapVisualizer : MonoBehaviour
         if (WallTypesHelper.wallInnerCornerDownLeft.Contains(typeASInt))
         {
             tile = wallInnerCornerDownLeft;
+            leftCornerWalls.Add(position);
         }
         else if (WallTypesHelper.wallInnerCornerDownRight.Contains(typeASInt))
         {
             tile = wallInnerCornerDownRight;
+            rightCornerWalls.Add(position);
         }
         else if (WallTypesHelper.wallDiagonalCornerDownLeft.Contains(typeASInt))
         {
@@ -114,5 +127,26 @@ public class TilemapVisualizer : MonoBehaviour
 
     public List<Vector2Int> GetSpawnList(){
         return spawnList;
+    }
+    public List<Vector2Int> GetRightWalls(){
+        return rightWalls;
+    }
+    public List<Vector2Int> GetLeftWalls(){
+        return leftWalls;
+    }
+    public List<Vector2Int> GetUpWalls(){
+        return upWalls;
+    }
+    public List<Vector2Int> GetDownWalls(){
+        return downWalls;
+    }
+    public Tilemap GetWallTilemap(){
+        return wallTilemap;
+    }
+    public List<Vector2Int> GetLeftCornerWalls(){
+        return leftCornerWalls;
+    }
+    public List<Vector2Int> GetRightCornerWalls(){
+        return rightCornerWalls;
     }
 }

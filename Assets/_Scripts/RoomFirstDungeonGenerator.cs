@@ -42,22 +42,23 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         startParam.Clear();
         boxBounds.Clear();
-        corridorDoors.Clear();
         foreach (var room in roomsList)
         {
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
             startParam.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
-           // boxBounds.Add(room);
+            boxBounds.Add(room);
         }
         
 
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
+        corridorDoors.Clear();
+       // corridorDoors = corridors;
+        floor.UnionWith(corridors);
         foreach (Vector2Int corridor in corridors)
         {
             corridorDoors.Add(corridor);
         }
-        floor.UnionWith(corridors);
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
     }
@@ -72,7 +73,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
             var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
             foreach (var position in roomFloor)
-            {
+            {   
                 if(position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset) && position.y >= (roomBounds.yMin - offset) && position.y <= (roomBounds.yMax - offset))
                 {
                     floor.Add(position);
