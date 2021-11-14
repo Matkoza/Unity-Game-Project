@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3116218911931315070}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7443312225144014202, guid: a0d3fbbc155eb404a87f827b40a48dfe, type: 3}
+  m_Sprite: {fileID: -3318589669578194417, guid: a0d3fbbc155eb404a87f827b40a48dfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

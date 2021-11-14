@@ -280,7 +280,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0042877197, y: -0.0070905685}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -291,7 +291,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48575783, y: 0.50743866}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &5125550116696463331
 MonoBehaviour:
@@ -311,7 +311,6 @@ MonoBehaviour:
   slimeBallPrefab: {fileID: 362017356749000977, guid: e80c6b9e4e3c6c340bdb29764663b239, type: 3}
   targetRange: 7.5
   startTimeBtwShots: 1.5
-  firePoint: {fileID: 0}
 --- !u!1 &4553653381311843313
 GameObject:
   m_ObjectHideFlags: 0
