@@ -17,7 +17,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private bool randomWalkRooms = false;
     public List<Vector2Int> startParam;
     public List<Vector2Int> allSpawnRooms;
-    public List<BoundsInt> boxBounds;
+    public List<BoundsInt> roomBoundsList;
     public List<Vector2Int> corridorDoors;
 
     protected override void RunProceduralGeneration()
@@ -41,12 +41,12 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         startParam.Clear();
-        boxBounds.Clear();
+        roomBoundsList.Clear();
         foreach (var room in roomsList)
         {
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
             startParam.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
-            boxBounds.Add(room);
+            roomBoundsList.Add(room);
         }
         
 
@@ -69,7 +69,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         for (int i = 0; i < roomsList.Count; i++)
         {
             var roomBounds = roomsList[i];
-            boxBounds.Add(roomsList[i]);
+            roomBoundsList.Add(roomsList[i]);
             var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
             var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
             foreach (var position in roomFloor)
@@ -158,8 +158,10 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 for (int row = offset; row < room.size.y - offset; row++)
                 {
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
+                    if(Random.Range(0, 100) <= 98){
+                        floor.Add(position);
+                    }
                     
-                    floor.Add(position);
                 }
             }
         }
@@ -173,8 +175,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             allSpawnRooms = tilemapVisualizer.GetSpawnList();
             return allSpawnRooms;
         }
-        public List<BoundsInt> GetBoxBounds(){
-            return boxBounds;
+        public List<BoundsInt> GetRoomBoundsList(){
+            return roomBoundsList;
         }
         public List<Vector2Int> GetCorrodorDoors() {
             return corridorDoors;

@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public static class ProceduralGenerationAlgorithms
 {
-    
     public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
     {
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
@@ -83,7 +82,8 @@ public static class ProceduralGenerationAlgorithms
 
     private static void SplitVertically(int minWidth, Queue<BoundsInt> roomsQueue, BoundsInt room)
     {
-        var xSplit = Random.Range(1, room.size.x);
+        //var xSplit = Random.Range(1, room.size.x);
+        var xSplit = room.size.x / 2;
         BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(xSplit, room.size.y, room.size.z));
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x + xSplit, room.min.y, room.min.z),
             new Vector3Int(room.size.x - xSplit, room.size.y, room.size.z));
@@ -93,7 +93,8 @@ public static class ProceduralGenerationAlgorithms
 
     private static void SplitHorizontally(int minHeight, Queue<BoundsInt> roomsQueue, BoundsInt room)
     {
-        var ySplit = Random.Range(1, room.size.y);
+        //var ySplit = Random.Range(1, room.size.y);
+        var ySplit =  room.size.y / 2;
         BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(room.size.x, ySplit, room.size.z));
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x, room.min.y + ySplit, room.min.z),
             new Vector3Int(room.size.x, room.size.y - ySplit, room.size.z));
@@ -133,24 +134,23 @@ public static class Direction2D
 
     };
 
-    public static Vector2Int GetRandomCardinalDirection()
-    {
-        return cardinalDirectionsList[UnityEngine.Random.Range(0, cardinalDirectionsList.Count)];
-    }
-    public static List<Vector2Int> GetAllCardinalDirections(){
-        return cardinalDirectionsList;
-    }
     public static Vector2Int GetUpDirection(){
         return cardinalDirectionsList[0];
     }
     public static Vector2Int GetRightDirection(){
         return cardinalDirectionsList[1];
     }
-
     public static Vector2Int GetDownDirection(){
         return cardinalDirectionsList[2];
     }
     public static Vector2Int GetLeftDirection(){
         return cardinalDirectionsList[3];
+    }
+    public static Vector2Int GetRandomCardinalDirection()
+    {
+        return cardinalDirectionsList[UnityEngine.Random.Range(0, cardinalDirectionsList.Count)];
+    }
+    public static List<Vector2Int> GetAllCardinalDirections(){
+        return cardinalDirectionsList;
     }
 }

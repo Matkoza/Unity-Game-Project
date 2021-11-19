@@ -9,7 +9,7 @@ public class TilemapVisualizer : MonoBehaviour
     [SerializeField]
     private Tilemap floorTilemap, wallTilemap;
     public List<Vector2Int> spawnList;
-    public List<Vector2Int> leftWalls, rightWalls, upWalls, downWalls,leftDownCornerWalls, rightDownCornerWalls, rightUpCornerWalls, leftUpCornerWalls, fullWalls;
+    public List<Vector2Int> leftWalls, rightWalls, upWalls, downWalls, leftDownCornerWalls, rightDownCornerWalls, rightUpCornerWalls, leftUpCornerWalls, fullWalls;
 
     [SerializeField]
     public TileBase floorTile, wallTop, wallSideRight, wallSiderLeft, wallBottom, wallFull, 
@@ -32,7 +32,9 @@ public class TilemapVisualizer : MonoBehaviour
     {
         foreach (var position in positions)
         {   
-            spawnList.Add(position);
+            if (tilemap == floorTilemap){
+                spawnList.Add(position);
+            }
             PaintSingleTile(tilemap, tile, position);
         }
     }
