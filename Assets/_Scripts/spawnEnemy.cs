@@ -8,37 +8,58 @@ public class spawnEnemy : MonoBehaviour
     [SerializeField]
     public RoomFirstDungeonGenerator roomFirstDungeonGenerator;
     public List<Vector2Int> spawnRooms, corridorDoors, roomFloor;
-    public GameObject enemyPrefab;
-    //public Vector3 spawnPosition;
+    public List<GameObject> doorList;
+    public List<Transform> positionList;
+    public List<List<GameObject>> enemyInRoomListList;
     public List<BoundsInt> roomBoundsList;
-    public int offset = 0;
+    public GameObject enemyPrefab;
+    public Transform player;
+    public spawnDoors doors;
+    [SerializeField]
+    public int enemyCap = 10;
+    public int deadEnemies, offset;
     void Start()
     {   
-        //everyRoomVector = new List<List<Vector2Int>>();
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        enemyInRoomListList = new List<List<GameObject>>();
         spawnRooms = roomFirstDungeonGenerator.GetAllSpawnList();
         roomBoundsList = roomFirstDungeonGenerator.GetRoomBoundsList();
+        doorList = doors.GetDoorList();
+        
         foreach (var room in roomBoundsList){ 
             roomFloor.Clear();
-            for (int col = offset; col < room.size.x - offset; col++)
-            {
-                for (int row = offset; row < room.size.y - offset; row++)
-                {
+            for (int col = offset; col < room.size.x - offset; col++){
+                for (int row = offset; row < room.size.y - offset; row++){
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
                     if (spawnRooms.Contains(position)){
                         roomFloor.Add(position);
                     }
                 }
             }
-            for (int i = 0; i < 5; i++)
-            {
+
+            List<GameObject> enemyList = new List<GameObject>();
+            for (int i = 0; i < enemyCap; i++)
+            {   
                 var randomPos = roomFloor[Random.Range(0, roomFloor.Count)];
                 var spawnPosition = new Vector3(randomPos.x + 0.5f, randomPos.y + 0.5f, 0);
                 GameObject a = Instantiate(enemyPrefab) as GameObject;
                 a.transform.position = spawnPosition;
+                //positionList.Add(a.transform.position);
+                enemyList.Add(a);
+                
             }
-            
-           
+
+            enemyInRoomListList.Add(enemyList); 
         }
+    }
+    public List<List<GameObject>> GetEnemyInRoomListList(){
+        return enemyInRoomListList;
+    }
+    public int GetEnemyCap(){
+        return enemyCap;
+    }
+    public List<Transform> GetTransforms(){
+        return positionList;
     }
 }
 

@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject slimeBallPrefab;
-    [SerializeField] float targetRange = 10f;
+    [SerializeField] 
+    public float targetRange = 10f;
     private float timeBtwnShots;
     public float startTimeBtwShots;
     private Transform target;

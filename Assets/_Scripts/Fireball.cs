@@ -12,7 +12,6 @@ public class Fireball : MonoBehaviour
     public Vector3 positionHolder;
     [SerializeField] private float maxLife = 2.0f;
 
-    // Update is called once per frame
     void Update()
     {
         theRB.velocity = transform.right *moveSpeed;
@@ -28,11 +27,7 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {   
         if (other.tag == "Enemy"){
-            Debug.Log("Hit");
-            
             other.gameObject.GetComponent<Enemy>().TakeDamage(20);
-            //positionHolder = transform.position;
-            //SpawnBalls(positionHolder);
             Destroy(gameObject);
         }
         else if (other.tag == "Walls"){

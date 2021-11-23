@@ -41,7 +41,7 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			if(Vector2.Distance(transform.position, target.position) > targetRange) {
+			if(Vector2.Distance(transform.position, target.position) > targetRange) {	
 				sees = false;
 				}
 			else if (target != null && ai != null && sees == true) {
@@ -49,6 +49,7 @@ namespace Pathfinding {
 			}
 
 			else {
+				//Debug.Log("Shouldnt Print");
 				sees = true;
 			}
 			

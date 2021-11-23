@@ -13,7 +13,7 @@ public class spawnDoors : MonoBehaviour
     public List<GameObject> doorList;
     public Vector3 spawnPosition;
     public List<BoundsInt> roomBounds;
-    public List<Vector2Int> corridorDoors, roomBoundsPositionList;
+    public List<Vector2Int> corridorDoors, roomBoundsPositionList, doorLocations;
     void Start()
     {
         doorList = new List<GameObject>();
@@ -49,14 +49,22 @@ public class spawnDoors : MonoBehaviour
                         roomBoundsPositionList.Add(new Vector2Int(x, y));
                     }
                 }
-            }
+        }
 
         foreach (var door in roomBoundsPositionList){
             if(corridorDoors.Contains(door)){
-                GameObject a = Instantiate(doorPrefab) as GameObject;
-                a.transform.position = new Vector3(door.x + 0.5f, door.y + 0.5f, 0);
-                doorList.Add(a);
+                if(doorLocations.Contains(door) == false){
+                    GameObject a = Instantiate(doorPrefab) as GameObject;
+                    var spawnLoc = new Vector3(door.x + 0.5f, door.y + 0.5f, 0);
+                    doorLocations.Add(new Vector2Int(door.x, door.y));       
+                    doorList.Add(a);
+                    a.transform.position = spawnLoc;
+                }
+                
             }
         }
+    }
+    public List<GameObject> GetDoorList(){
+        return doorList;
     }
  }

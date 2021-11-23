@@ -17,10 +17,10 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHeath(maxHealth);
         allRoomCenters = roomFirstDungeonGenerator.GetRoomCenters();
-        spawnRoom = allRoomCenters[Random.Range(0, allRoomCenters.Count - 1)];
-        positionGetter = spawnRoom;
-        //Debug.Log(positionGetter);
-        transform.position = new Vector3(spawnRoom.x, spawnRoom.y, 0);
+        // spawnRoom = allRoomCenters[Random.Range(0, allRoomCenters.Count - 1)];
+        // positionGetter = spawnRoom;
+        // //Debug.Log(positionGetter);
+        // transform.position = new Vector3(spawnRoom.x, spawnRoom.y, 0);
         spawned = true;
         //positionGetter = new Vector2Int((int)transform.position.x, (int)transform.position.y);
     }
