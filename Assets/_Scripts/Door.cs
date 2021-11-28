@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
-{   public Rigidbody2D theRB;
+{   
+    public Rigidbody2D theRB;
     public Collider2D collider;
     void Start()
     {
         collider = gameObject.GetComponent<Collider2D>();
         collider.enabled = true;
+        gameObject.active = false;
     }
     void Update()
     {

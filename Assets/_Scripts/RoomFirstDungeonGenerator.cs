@@ -18,6 +18,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     public List<Vector2Int> startParam;
     public List<Vector2Int> allSpawnRooms;
     public List<BoundsInt> roomBoundsList;
+    public BoundsInt startRoom, endRoom;
     public List<Vector2Int> corridorDoors;
 
     protected override void RunProceduralGeneration()
@@ -42,18 +43,29 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         startParam.Clear();
         roomBoundsList.Clear();
+        int index = 0;
         foreach (var room in roomsList)
-        {
+        {   
+            
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
             startParam.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
-            roomBoundsList.Add(room);
+            if(index == 0){
+                startRoom = roomsList[index];
+            }
+            else if (index == roomsList.Count - 1){
+                endRoom = roomsList[index];
+            }
+            else{
+                roomBoundsList.Add(room);
+            }
+            
+            index++;
         }
         
 
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         corridorDoors.Clear();
-       // corridorDoors = corridors;
         floor.UnionWith(corridors);
         foreach (Vector2Int corridor in corridors)
         {
@@ -158,10 +170,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 for (int row = offset; row < room.size.y - offset; row++)
                 {
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
-                    if(Random.Range(0, 100) <= 98){
-                        floor.Add(position);
-                    }
-                    
+                    floor.Add(position);
                 }
             }
         }
@@ -180,5 +189,11 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         }
         public List<Vector2Int> GetCorrodorDoors() {
             return corridorDoors;
+        }
+        public BoundsInt GetStartRoom(){
+            return startRoom;
+        }
+        public BoundsInt GetEndRoom(){
+            return endRoom;
         }
 }

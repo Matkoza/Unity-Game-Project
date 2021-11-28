@@ -5,9 +5,7 @@ public class FireballFour : MonoBehaviour
 {  
     public float moveSpeed = 3f;
     public Rigidbody2D theRB;
-   // public int damage = 5;
     private float lifeTimer;
-    public Vector3 positionHolder;
     
     [SerializeField] private float maxLife = 1.5f;
     void Update()
@@ -23,6 +21,10 @@ public class FireballFour : MonoBehaviour
     {   
         if (other.tag == "Enemy"){
             other.gameObject.GetComponent<Enemy>().TakeDamage(20);
+            Destroy(gameObject);
+        }
+        if (other.tag == "Boss"){
+            other.gameObject.GetComponent<Boss>().TakeDamage(20);
             Destroy(gameObject);
         }
         else if (other.tag == "Walls"){

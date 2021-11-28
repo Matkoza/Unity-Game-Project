@@ -49,10 +49,10 @@ public static class ProceduralGenerationAlgorithms
             {
                 if(Random.value < 0.5f)
                 {
-                    if(room.size.y >= minHeight * 2)
+                    if(room.size.y >= minHeight * 2.5)
                     {
                         SplitHorizontally(minHeight, roomsQueue, room);
-                    }else if(room.size.x >= minWidth * 2)
+                    }else if(room.size.x >= minWidth * 2.5)
                     {
                         SplitVertically(minWidth, roomsQueue, room);
                     }else if(room.size.x >= minWidth && room.size.y >= minHeight)
@@ -62,11 +62,11 @@ public static class ProceduralGenerationAlgorithms
                 }
                 else
                 {
-                    if (room.size.x >= minWidth * 2)
+                    if (room.size.x >= minWidth * 2.5)
                     {
                         SplitVertically(minWidth, roomsQueue, room);
                     }
-                    else if (room.size.y >= minHeight * 2)
+                    else if (room.size.y >= minHeight * 2.5)
                     {
                         SplitHorizontally(minHeight, roomsQueue, room);
                     }
@@ -82,8 +82,8 @@ public static class ProceduralGenerationAlgorithms
 
     private static void SplitVertically(int minWidth, Queue<BoundsInt> roomsQueue, BoundsInt room)
     {
-        //var xSplit = Random.Range(1, room.size.x);
-        var xSplit = room.size.x / 2;
+        var xSplit = Random.Range(room.size.x/4, room.size.x*3/4);
+        //var xSplit = room.size.x / 2;
         BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(xSplit, room.size.y, room.size.z));
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x + xSplit, room.min.y, room.min.z),
             new Vector3Int(room.size.x - xSplit, room.size.y, room.size.z));
@@ -93,8 +93,8 @@ public static class ProceduralGenerationAlgorithms
 
     private static void SplitHorizontally(int minHeight, Queue<BoundsInt> roomsQueue, BoundsInt room)
     {
-        //var ySplit = Random.Range(1, room.size.y);
-        var ySplit =  room.size.y / 2;
+        var ySplit = Random.Range(room.size.y/4, room.size.y*3/4);
+        //var ySplit =  room.size.y / 2;
         BoundsInt room1 = new BoundsInt(room.min, new Vector3Int(room.size.x, ySplit, room.size.z));
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x, room.min.y + ySplit, room.min.z),
             new Vector3Int(room.size.x, room.size.y - ySplit, room.size.z));

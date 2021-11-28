@@ -179,14 +179,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65494767f9b15c64ba68d2ab020a4088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
+  moveSpeed: 5
   up: {fileID: 5510385562035300891}
   down: {fileID: 848443711148401881}
   left: {fileID: 300080700461826010}
   right: {fileID: 3780607964283648387}
   fireballFourPrefab: {fileID: 5010948930595137541, guid: 6fc42737503ab0d4dbb53f8a4e88eb5c, type: 3}
   theRB: {fileID: 500093559444897715}
-  damage: 5
   positionHolder: {x: 0, y: 0, z: 0}
   maxLife: 0.4
 --- !u!1 &1462495282255374069

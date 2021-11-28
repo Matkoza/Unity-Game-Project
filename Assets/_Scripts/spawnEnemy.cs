@@ -9,7 +9,6 @@ public class spawnEnemy : MonoBehaviour
     public RoomFirstDungeonGenerator roomFirstDungeonGenerator;
     public List<Vector2Int> spawnRooms, corridorDoors, roomFloor;
     public List<GameObject> doorList;
-    public List<Transform> positionList;
     public List<List<GameObject>> enemyInRoomListList;
     public List<BoundsInt> roomBoundsList;
     public GameObject enemyPrefab;
@@ -33,6 +32,7 @@ public class spawnEnemy : MonoBehaviour
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
                     if (spawnRooms.Contains(position)){
                         roomFloor.Add(position);
+                        //spawnRooms.Remove(position);
                     }
                 }
             }
@@ -57,9 +57,6 @@ public class spawnEnemy : MonoBehaviour
     }
     public int GetEnemyCap(){
         return enemyCap;
-    }
-    public List<Transform> GetTransforms(){
-        return positionList;
     }
 }
 

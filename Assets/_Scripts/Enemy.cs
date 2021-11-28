@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    public int maxHealth = 100;
-    public int currentHealth;
+{   
+    [SerializeField] 
+    public int maxHealth = 100, currentHealth;
     public HealthBar healthBar;
     public GameObject slimeBallPrefab;
-    [SerializeField] 
     public float targetRange = 10f;
     private float timeBtwnShots;
     public float startTimeBtwShots;
     private Transform target;
     void Start()
-    {
+    {   
+        target = GameObject.FindWithTag("Player").GetComponent<Transform>();
         currentHealth = maxHealth;
         healthBar.SetMaxHeath(maxHealth);
-        target = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
     void Update()
     {

@@ -30,6 +30,10 @@ public class Fireball : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().TakeDamage(20);
             Destroy(gameObject);
         }
+        if (other.tag == "Boss"){
+            other.gameObject.GetComponent<Enemy>().TakeDamage(20);
+            Destroy(gameObject);
+        }
         else if (other.tag == "Walls"){
             positionHolder = transform.position;
             SpawnBalls(positionHolder);
