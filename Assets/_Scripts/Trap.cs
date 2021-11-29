@@ -21,5 +21,4 @@ public class Trap : MonoBehaviour
             Debug.Log("Stepped on trap");
         }
     }
-    
 }

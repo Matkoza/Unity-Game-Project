@@ -29,16 +29,13 @@ public class Pivot : MonoBehaviour
         }
         else {
             timeBtwnShots -= Time.deltaTime; 
-        }     
-
+        }
+        
         if (timeBtwnShotsB <= 0){
-            if (Input.GetMouseButton(1))
-                {
-                    var xfireball = (GameObject) Instantiate(fireballPrefab, firePoint.position, transform.rotation);
-                   // var fireball2 = (GameObject) Instantiate(fireballPrefab, firePoint.position , transform.rotation);
-                    //var fireball3 = (GameObject) Instantiate(fireballPrefab, firePoint.position , transform.rotation);
-                    timeBtwnShotsB = startTimeBtwShotsB;
-                }
+            if (Input.GetMouseButton(1)){
+                var xfireball = (GameObject) Instantiate(fireballPrefab, firePoint.position, transform.rotation);
+                timeBtwnShotsB = startTimeBtwShotsB;
+            }
         }
         else {
             timeBtwnShotsB -= Time.deltaTime;
@@ -53,7 +50,6 @@ public class Pivot : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(180, 180, -angle);
             }
        }
-        
     }
 }
 

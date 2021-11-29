@@ -23,6 +23,7 @@ public class spawnEnemy : MonoBehaviour
         enemyInRoomListList = new List<List<GameObject>>();
         spawnRooms = roomFirstDungeonGenerator.GetAllSpawnList();
         roomBoundsList = roomFirstDungeonGenerator.GetRoomBoundsList();
+        corridorDoors = roomFirstDungeonGenerator.GetCorrodorDoors();
         doorList = doors.GetDoorList();
         
         foreach (var room in roomBoundsList){ 
@@ -30,7 +31,7 @@ public class spawnEnemy : MonoBehaviour
             for (int col = offset; col < room.size.x - offset; col++){
                 for (int row = offset; row < room.size.y - offset; row++){
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
-                    if (spawnRooms.Contains(position)){
+                    if (spawnRooms.Contains(position) && corridorDoors.Contains(position) == false && corridorDoors.Contains(new Vector2Int(position.x - 1, position.y -1)) == false && corridorDoors.Contains(new Vector2Int(position.x + 1, position.y + 1)) == false){
                         roomFloor.Add(position);
                         //spawnRooms.Remove(position);
                     }
@@ -48,7 +49,6 @@ public class spawnEnemy : MonoBehaviour
                 enemyList.Add(a);
                 
             }
-
             enemyInRoomListList.Add(enemyList); 
         }
     }

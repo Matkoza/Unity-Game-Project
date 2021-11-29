@@ -11,17 +11,14 @@ public class HandleDoors : MonoBehaviour
     public List<GameObject> doorList;
     public List<List<GameObject>> enemyInRoomListList;
     public int enemyCap, deadEnemies;
-
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        doorList = doors.GetDoorList();
         enemyInRoomListList = enemies.GetEnemyInRoomListList();
         enemyCap = enemies.GetEnemyCap();
-        Debug.Log(enemyInRoomListList.Count);
-        
+        doorList = doors.GetDoorList();
     }
-
+    //Needs to be turned into a function that is checked on update
     void Update()
     {
         for (int i = 0; i < enemyInRoomListList.Count; i++)
@@ -30,9 +27,7 @@ public class HandleDoors : MonoBehaviour
             {   
                 if(enemyInRoomListList[i][j] != null){
                     var dest = enemyInRoomListList[i][j].GetComponent<AIDestinationSetter>();
-                    //Debug.Log(dest.sees);
-                    if (dest.sees == true){
-                        //Debug.Log("Player seen ");
+                    if (dest.CanSeePlayer() == true){
                         foreach (var door in doorList){
                             door.active = true;
                         }

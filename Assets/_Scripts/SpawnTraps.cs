@@ -40,9 +40,7 @@ public class SpawnTraps : MonoBehaviour
                 trapList.Add(a);
                 
             }
-
             trapInRoomListList.Add(trapList); 
         }
     }
-
 }

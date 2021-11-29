@@ -8,9 +8,8 @@ public class Boss : MonoBehaviour
     public int maxHealth = 300, currentHealth;
     public HealthBar healthBar;
     public GameObject slimeBallPrefab;
-    public float targetRange = 10f;
+    public float targetRange = 10f, startTimeBtwShots;
     private float timeBtwnShots;
-    public float startTimeBtwShots;
     private Transform target;
     void Start()
     {   
@@ -20,23 +19,20 @@ public class Boss : MonoBehaviour
     }
     void Update()
     {
-      if (healthBar.slider.value == 0){
-          Destroy(gameObject);
-      }
-
-        
+      if(healthBar.slider.value == 0){
+        Destroy(gameObject);
+      }  
     }
     public void FixedUpdate(){
         if(Vector2.Distance(transform.position, target.position) < targetRange) {
-				if (timeBtwnShots <= 0){
-                    var slimeball = (GameObject) Instantiate(slimeBallPrefab, transform.position, Quaternion.identity); 
-                        timeBtwnShots = startTimeBtwShots;
-                }
-                else{
-                    timeBtwnShots -= Time.deltaTime;
-                }
+			if(timeBtwnShots <= 0){
+                var slimeball = (GameObject) Instantiate(slimeBallPrefab, transform.position, Quaternion.identity); 
+                    timeBtwnShots = startTimeBtwShots;
+            }
+            else{
+                timeBtwnShots -= Time.deltaTime;
+            }
 		}
-        
     }
 
     public void TakeDamage(int damage){

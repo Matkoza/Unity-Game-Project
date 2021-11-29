@@ -17,7 +17,6 @@ namespace Pathfinding {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
 		IAstarAI ai;
-		public bool sees;
 
 		[SerializeField]
 		float targetRange = 10f;
@@ -25,34 +24,33 @@ namespace Pathfinding {
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			target = GameObject.FindWithTag("Player").GetComponent<Transform>();
-			sees = false;
-			
-			// Update the destination right before searching for a path as well.
-			// This is enough in theory, but this script will also update the destination every
-			// frame as the destination is used for debugging and may be used for other things by other
-			// scripts as well. So it makes sense that it is up to date every frame.
-			
 		}
 
 		void OnDisable () {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
 
-
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			if(Vector2.Distance(transform.position, target.position) > targetRange) {	
-				sees = false;
-				}
-			else if (target != null && ai != null && sees == true) {
+			if(CanSeePlayer() == true){
 				ai.destination = target.position;
 			}
-
-			else {
-				//Debug.Log("Shouldnt Print");
-				sees = true;
+		}
+		public bool CanSeePlayer(){
+			bool sees = false;
+			if(Vector2.Distance(transform.position, target.position) < targetRange){
+				RaycastHit2D hit = Physics2D.Linecast(transform.position, target.position, 1 << LayerMask.NameToLayer("Walls"));
+				if(hit.collider != null){
+					if(hit.collider.gameObject.CompareTag("Player")){
+						sees = true;
+					}
+					else if(hit.collider.gameObject.CompareTag("Walls")){
+						sees = false;
+					}
+					Debug.DrawLine(transform.position, target.position, Color.blue);
+				}
 			}
-			
+			return sees; 
 		}
 	}
 }

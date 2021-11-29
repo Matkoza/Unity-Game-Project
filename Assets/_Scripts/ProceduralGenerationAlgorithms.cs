@@ -49,10 +49,10 @@ public static class ProceduralGenerationAlgorithms
             {
                 if(Random.value < 0.5f)
                 {
-                    if(room.size.y >= minHeight * 2.5)
+                    if(room.size.y >= minHeight * 2)
                     {
                         SplitHorizontally(minHeight, roomsQueue, room);
-                    }else if(room.size.x >= minWidth * 2.5)
+                    }else if(room.size.x >= minWidth * 2)
                     {
                         SplitVertically(minWidth, roomsQueue, room);
                     }else if(room.size.x >= minWidth && room.size.y >= minHeight)
@@ -62,11 +62,11 @@ public static class ProceduralGenerationAlgorithms
                 }
                 else
                 {
-                    if (room.size.x >= minWidth * 2.5)
+                    if (room.size.x >= minWidth * 2)
                     {
                         SplitVertically(minWidth, roomsQueue, room);
                     }
-                    else if (room.size.y >= minHeight * 2.5)
+                    else if (room.size.y >= minHeight * 2)
                     {
                         SplitHorizontally(minHeight, roomsQueue, room);
                     }

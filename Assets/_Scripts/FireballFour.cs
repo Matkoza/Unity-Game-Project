@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class FireballFour : MonoBehaviour
 {  
-    public float moveSpeed = 3f;
-    public Rigidbody2D theRB;
+    [SerializeField] 
+    public float maxLife = 1.5f, moveSpeed = 3f;
     private float lifeTimer;
+    public Rigidbody2D theRB;
     
-    [SerializeField] private float maxLife = 1.5f;
     void Update()
     {
         theRB.velocity = transform.right *moveSpeed;
