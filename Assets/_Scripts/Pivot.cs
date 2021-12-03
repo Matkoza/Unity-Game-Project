@@ -14,6 +14,7 @@ public class Pivot : MonoBehaviour
     public float startTimeBtwShots;
     private float timeBtwnShotsB;
     public float startTimeBtwShotsB;
+    
     void FixedUpdate()
     {   
         mousePos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));

@@ -33,7 +33,7 @@ public class SpawnScriptures : MonoBehaviour
             List<GameObject> scriptureList = new List<GameObject>();
             for (int i = 0; i < scriptureCap; i++)
             {   
-                var randomPos = roomFloor[Random.Range(0, roomFloor.Count)];
+                var randomPos = room.center;
                 var spawnPosition = new Vector3(randomPos.x + 0.5f, randomPos.y, 0);
                 GameObject a = Instantiate(scripturePrefab) as GameObject;
                 a.transform.position = spawnPosition;

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theRB: {fileID: 362017356749000976}
-  moveSpeed: 15
+  moveSpeed: 10
   maxLife: 2.5
 --- !u!1 &4231696745579769670
 GameObject:

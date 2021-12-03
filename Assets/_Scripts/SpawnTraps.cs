@@ -17,13 +17,14 @@ public class SpawnTraps : MonoBehaviour
         trapInRoomListList = new List<List<GameObject>>();
         spawnRooms = roomFirstDungeonGenerator.GetAllSpawnList();
         roomBoundsList = roomFirstDungeonGenerator.GetRoomBoundsList();
+        corridorDoors = roomFirstDungeonGenerator.GetCorrodorDoors();
         
         foreach (var room in roomBoundsList){ 
             roomFloor.Clear();
             for (int col = offset; col < room.size.x - offset; col++){
                 for (int row = offset; row < room.size.y - offset; row++){
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
-                    if (spawnRooms.Contains(position)){
+                    if (spawnRooms.Contains(position) && corridorDoors.Contains(position) == false){
                         roomFloor.Add(position);
                         //spawnRooms.Remove(position);
                     }
@@ -31,14 +32,12 @@ public class SpawnTraps : MonoBehaviour
             }
 
             List<GameObject> trapList = new List<GameObject>();
-            for (int i = 0; i < trapCap; i++)
-            {   
+            for (int i = 0; i < trapCap; i++){   
                 var randomPos = roomFloor[Random.Range(0, roomFloor.Count)];
                 var spawnPosition = new Vector3(randomPos.x +0.5f, randomPos.y +0.5f, 0);
                 GameObject a = Instantiate(trapPrefab) as GameObject;
                 a.transform.position = spawnPosition;
                 trapList.Add(a);
-                
             }
             trapInRoomListList.Add(trapList); 
         }
