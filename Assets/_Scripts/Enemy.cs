@@ -29,7 +29,11 @@ public class Enemy : MonoBehaviour
         var dest = this.gameObject.GetComponent<AIDestinationSetter>();
         if(dest.CanSeePlayer() == true){
             if(timeBtwnShots <= 0){
-                var slimeball = (GameObject) Instantiate(slimeBallPrefab, transform.position, Quaternion.identity); 
+                Vector3 shootPath = target.transform.position - transform.position;
+                shootPath.Normalize();
+                float angle = Mathf.Atan2(shootPath.y, shootPath.x) * Mathf.Rad2Deg;
+                var rotation = Quaternion.Euler(0f, 0f, angle);
+                var slimeball = (GameObject) Instantiate(slimeBallPrefab, transform.position, rotation); 
                 timeBtwnShots = startTimeBtwShots;
             }
             else{

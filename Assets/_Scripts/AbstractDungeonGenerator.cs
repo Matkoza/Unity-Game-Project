@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +15,5 @@ public abstract class AbstractDungeonGenerator : MonoBehaviour
         tilemapVisualizer.Clear();
         RunProceduralGeneration();
     }
-
     protected abstract void RunProceduralGeneration();
 }

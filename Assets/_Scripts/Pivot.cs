@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pivot : MonoBehaviour
 {   
     public GameObject myPlayer;
+    public Weapon currentWeapon;
     [SerializeField]
     private Camera cam;
     public GameObject fireballPrefab, fireballFourPrefab;
@@ -14,6 +15,11 @@ public class Pivot : MonoBehaviour
     public float startTimeBtwShots;
     private float timeBtwnShotsB;
     public float startTimeBtwShotsB;
+
+    void Start(){
+        //currentWeapon.currentWeaponSprite = currentWeaponSprite;
+    }
+    
     
     void FixedUpdate()
     {   
@@ -24,9 +30,14 @@ public class Pivot : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
         if (timeBtwnShots <= 0){
             if(Input.GetMouseButton(0)){
-                var fireball = (GameObject) Instantiate(fireballFourPrefab, firePoint.position, transform.rotation);
+                // var fireball = (GameObject) Instantiate(fireballFourPrefab, firePoint.position, transform.rotation);
+                // timeBtwnShots = startTimeBtwShots;
+                Debug.Log("Shooting weapon");
+                currentWeapon.Shoot();
                 timeBtwnShots = startTimeBtwShots;
+                
             }
+            
         }
         else {
             timeBtwnShots -= Time.deltaTime; 
@@ -34,8 +45,8 @@ public class Pivot : MonoBehaviour
         
         if (timeBtwnShotsB <= 0){
             if (Input.GetMouseButton(1)){
-                var xfireball = (GameObject) Instantiate(fireballPrefab, firePoint.position, transform.rotation);
-                timeBtwnShotsB = startTimeBtwShotsB;
+                // var xfireball = (GameObject) Instantiate(fireballPrefab, firePoint.position, transform.rotation);
+                // timeBtwnShotsB = startTimeBtwShotsB;
             }
         }
         else {

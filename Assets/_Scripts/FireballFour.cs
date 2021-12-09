@@ -10,7 +10,7 @@ public class FireballFour : MonoBehaviour
     
     void Update()
     {
-        theRB.velocity = transform.right *moveSpeed;
+        theRB.velocity = transform.right * moveSpeed;
         lifeTimer += Time.deltaTime;
         if(lifeTimer >= maxLife){
             Destroy(gameObject);
