@@ -54,11 +54,11 @@ public class Fireball : MonoBehaviour
             float anglel = Mathf.Atan2(shootPathl.y, shootPathl.x) * Mathf.Rad2Deg;
             fireballLeft.transform.rotation = Quaternion.Euler(0, 0, anglel);
             
-            GameObject fireballDown = Instantiate(fireballFourPrefab) as GameObject;
-            Vector3 shootPathd = down.position - spawnPosition;
-            fireballDown.transform.position = down.position;
-            float angled = Mathf.Atan2(shootPathd.y, shootPathd.x) * Mathf.Rad2Deg;
-            fireballDown.transform.rotation = Quaternion.Euler(0, 0, angled);
+            // GameObject fireballDown = Instantiate(fireballFourPrefab) as GameObject;
+            // Vector3 shootPathd = down.position - spawnPosition;
+            // fireballDown.transform.position = down.position;
+            // float angled = Mathf.Atan2(shootPathd.y, shootPathd.x) * Mathf.Rad2Deg;
+            // fireballDown.transform.rotation = Quaternion.Euler(0, 0, angled);
     }
 }
 

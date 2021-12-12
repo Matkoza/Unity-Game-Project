@@ -17,7 +17,7 @@ public class Pivot : MonoBehaviour
     public float startTimeBtwShotsB;
 
     void Start(){
-        timeBtwnShots = startTimeBtwShots;
+        timeBtwnShots = currentWeapon.fireRate;
     }
     
     void FixedUpdate(){   
@@ -30,9 +30,9 @@ public class Pivot : MonoBehaviour
             if(Input.GetMouseButton(0)){
                 // var fireball = (GameObject) Instantiate(fireballFourPrefab, firePoint.position, transform.rotation);
                 // timeBtwnShots = startTimeBtwShots;
-                Debug.Log("Shooting weapon");
+                //Debug.Log("Shooting weapon");
                 currentWeapon.Shoot();
-                timeBtwnShots = startTimeBtwShots;
+                timeBtwnShots = currentWeapon.fireRate;
                 
             }
             

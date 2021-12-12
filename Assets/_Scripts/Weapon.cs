@@ -12,6 +12,7 @@ public class Weapon : ScriptableObject
     public int damage = 10;
 
     public void Shoot(){
-        Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, GameObject.Find("WeaponPivot").transform.rotation);  //Quaternion.identity 
+        Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, GameObject.Find("WeaponPivot").transform.rotation);  //Quaternion.identity
+        Debug.Log(GameObject.Find("FirePoint").transform.position);
     }
 }
