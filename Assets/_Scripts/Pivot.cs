@@ -17,12 +17,10 @@ public class Pivot : MonoBehaviour
     public float startTimeBtwShotsB;
 
     void Start(){
-        //currentWeapon.currentWeaponSprite = currentWeaponSprite;
+        timeBtwnShots = startTimeBtwShots;
     }
     
-    
-    void FixedUpdate()
-    {   
+    void FixedUpdate(){   
         mousePos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
         Vector3 shootPath = mousePos - transform.position;
         shootPath.Normalize();
@@ -50,7 +48,7 @@ public class Pivot : MonoBehaviour
             }
         }
         else {
-            timeBtwnShotsB -= Time.deltaTime;
+            //timeBtwnShotsB -= Time.deltaTime;
         }
 
         // For handling weapon rotation

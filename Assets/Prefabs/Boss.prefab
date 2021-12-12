@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9964ff224f95849b77cc3ad55aeaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 500
   currentHealth: 0
   healthBar: {fileID: 1404029278893305363}
   slimeBallPrefab: {fileID: 362017356749000977, guid: e80c6b9e4e3c6c340bdb29764663b239, type: 3}
@@ -70,7 +70,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
-  sees: 0
   targetRange: 7.5
 --- !u!114 &4896051732884468912
 MonoBehaviour:

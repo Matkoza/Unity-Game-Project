@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public Rigidbody2D theRB;
+    //public Rigidbody2D theRB;
     public Collider2D collider;
     void Start()
     {

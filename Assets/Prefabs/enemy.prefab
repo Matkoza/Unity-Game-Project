@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735941226940033163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.96, y: 9.46, z: 0}
+  m_LocalPosition: {x: -9.486, y: 12.457, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1691953541838321063}
@@ -204,10 +204,10 @@ MonoBehaviour:
   version: 2
   radius: 0.33
   height: 2
-  repathRate: 2
+  repathRate: 1.2
   canSearch: 1
   canMove: 1
-  maxSpeed: 1.5
+  maxSpeed: 3.5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -308,11 +308,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  startTimeBtwShots: 1.5
+  startTimeBtwShots: 1.2
   targetRange: 7.5
   healthBar: {fileID: 8793541494409356389}
   slimeBallPrefab: {fileID: 362017356749000977, guid: e80c6b9e4e3c6c340bdb29764663b239, type: 3}
-  firePoint: {fileID: 1691953541838321063}
 --- !u!50 &4849188876479909100
 Rigidbody2D:
   serializedVersion: 4

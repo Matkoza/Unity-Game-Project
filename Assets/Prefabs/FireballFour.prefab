@@ -182,7 +182,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5867532299915542693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadf0e3aaad2be84fb5d0b5ab2f1f437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 1.25
   moveSpeed: 6
   theRB: {fileID: 5010948930595137540}
-  positionHolder: {x: 0, y: 0, z: 0}
-  maxLife: 1.25

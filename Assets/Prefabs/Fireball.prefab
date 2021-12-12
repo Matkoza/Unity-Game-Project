@@ -166,7 +166,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &500093559444897676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  maxLife: 0.6
+  lifeTimer: 0
   up: {fileID: 5510385562035300891}
   down: {fileID: 848443711148401881}
   left: {fileID: 300080700461826010}
@@ -187,7 +189,6 @@ MonoBehaviour:
   fireballFourPrefab: {fileID: 5010948930595137541, guid: 6fc42737503ab0d4dbb53f8a4e88eb5c, type: 3}
   theRB: {fileID: 500093559444897715}
   positionHolder: {x: 0, y: 0, z: 0}
-  maxLife: 0.4
 --- !u!1 &1462495282255374069
 GameObject:
   m_ObjectHideFlags: 0
