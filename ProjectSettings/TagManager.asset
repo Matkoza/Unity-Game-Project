@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Door
   - Boss
+  - BombEnemy
   layers:
   - Default
   - TransparentFX

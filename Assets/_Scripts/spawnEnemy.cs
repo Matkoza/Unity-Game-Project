@@ -9,9 +9,11 @@ public class spawnEnemy : MonoBehaviour
     public RoomFirstDungeonGenerator roomFirstDungeonGenerator;
     public List<Vector2Int> spawnRooms, corridorDoors, roomFloor;
     public List<GameObject> doorList;
+    [SerializeField]
+    public List<GameObject> enemyList;
     public List<List<GameObject>> enemyInRoomListList;
     public List<BoundsInt> roomBoundsList;
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefab, bombEnemyPrefab;
     public Transform player;
     public spawnDoors doors;
     [SerializeField]
@@ -39,14 +41,26 @@ public class spawnEnemy : MonoBehaviour
             }
 
             List<GameObject> enemyList = new List<GameObject>();
+            List<GameObject> bombEnemyList = new List<GameObject>();
             for (int i = 0; i < enemyCap; i++)
             {   
                 var randomPos = roomFloor[Random.Range(0, roomFloor.Count)];
                 var spawnPosition = new Vector3(randomPos.x + 0.5f, randomPos.y + 0.5f, 0);
-                GameObject a = Instantiate(enemyPrefab) as GameObject;
-                a.transform.position = spawnPosition;
-                //positionList.Add(a.transform.position);
-                enemyList.Add(a);
+                var rn = Random.Range(0, 3);
+                if(rn == 0){
+                    GameObject a = Instantiate(enemyPrefab) as GameObject;
+                    a.transform.position = spawnPosition;
+                    roomFloor.Remove(randomPos);
+                    enemyList.Add(a);
+                }
+                else{
+                    GameObject b = Instantiate(bombEnemyPrefab) as GameObject;
+                    b.transform.position = spawnPosition;
+                    roomFloor.Remove(randomPos);
+                    //enemyList.Add(a);
+                }
+                
+                
                 
             }
             enemyInRoomListList.Add(enemyList); 
