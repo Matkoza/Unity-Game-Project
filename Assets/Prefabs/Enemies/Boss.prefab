@@ -55,7 +55,7 @@ MonoBehaviour:
   healthBar: {fileID: 1404029278893305363}
   slimeBallPrefab: {fileID: 362017356749000977, guid: e80c6b9e4e3c6c340bdb29764663b239, type: 3}
   targetRange: 10
-  startTimeBtwShots: 0.5
+  startTimeBtwShots: 0.7
 --- !u!114 &3225106652452888372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.5
+  radius: 0.3
   height: 2
   repathRate: 2
   canSearch: 1

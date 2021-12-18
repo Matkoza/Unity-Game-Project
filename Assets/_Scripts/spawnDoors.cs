@@ -10,16 +10,60 @@ public class spawnDoors : MonoBehaviour
     public TilemapVisualizer tilemapVisualizer;
     [SerializeField]
     public GameObject doorPrefab;
-    public List<GameObject> doorList;
+    public List<GameObject> doorList, bossDoorList;
     public Vector3 spawnPosition;
     public List<BoundsInt> roomBounds;
-    public List<Vector2Int> corridorDoors, roomBoundsPositionList, doorLocations;
+    public BoundsInt endRoom;
+    public List<Vector2Int> corridorDoors, roomBoundsPositionList, doorLocations, bossdoorLocations, bossRoomBound;
     void Start()
     {
         doorList = new List<GameObject>();
         roomBounds = roomFirstDungeonGenerator.GetRoomBoundsList();
         corridorDoors = roomFirstDungeonGenerator.GetCorrodorDoors();
+        endRoom = roomFirstDungeonGenerator.GetEndRoom();
+        SpawnBossDoor(); 
+    }
+    public void SpawnBossDoor(){
 
+        // Left Bound
+        for (int y = endRoom.yMin; y <= endRoom.yMax; y++){
+            for (int x = endRoom.xMin; x < endRoom.xMin + 1; x++){
+                bossRoomBound.Add(new Vector2Int(x, y));
+        	}
+        }
+
+        //Upper Bound
+        for (int y = endRoom.yMax; y > endRoom.yMax - 1; y --){
+            for(int x = endRoom.xMin; x <= endRoom.xMax; x ++){
+                bossRoomBound.Add(new Vector2Int(x, y));
+            }
+        }
+
+        //Right Bound
+        for (int y = endRoom.yMax; y >= endRoom.yMin; y --){
+            for(int x = endRoom.xMax; x > endRoom.xMax - 1; x --){
+                bossRoomBound.Add(new Vector2Int(x, y));
+        	}
+        }
+
+        //Lower Bound
+        for (int y = endRoom.yMin; y < endRoom.yMin + 1; y ++){
+            for(int x = endRoom.xMax; x >= endRoom.xMin; x --){
+                bossRoomBound.Add(new Vector2Int(x, y));
+            }
+        }
+
+        foreach (var door in bossRoomBound){
+            if(bossdoorLocations.Contains(door) == false){
+                GameObject a = Instantiate(doorPrefab) as GameObject;
+                var spawnLoc = new Vector3(door.x + 0.5f, door.y + 0.5f, 0);
+                bossdoorLocations.Add(new Vector2Int(door.x, door.y));       
+                bossDoorList.Add(a);
+                a.transform.position = spawnLoc;
+            } 
+        }
+    }
+    public void SpawnAllDoors(){
         foreach (BoundsInt roomBound in roomBounds){
 
                 // Left Bound
@@ -67,4 +111,8 @@ public class spawnDoors : MonoBehaviour
     public List<GameObject> GetDoorList(){
         return doorList;
     }
+    public List<GameObject> GetBossDoorList(){
+        return bossDoorList;
+    }
+    
  }

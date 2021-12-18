@@ -5,22 +5,39 @@ using Pathfinding;
 
 public class HandleDoors : MonoBehaviour
 {   
-    public Transform player;
     public spawnDoors doors;
     public spawnEnemy enemies;
-    public List<GameObject> doorList;
+    public SpawnBoss bosses;
+    public List<GameObject> bossList;
+    public List<GameObject> doorList, bossDoorList;
     public List<List<GameObject>> enemyInRoomListList;
     public int enemyCap, deadEnemies;
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         enemyInRoomListList = enemies.GetEnemyInRoomListList();
+        bossList = bosses.GetBossList();
         enemyCap = enemies.GetEnemyCap();
         doorList = doors.GetDoorList();
+        bossDoorList = doors.GetBossDoorList();
     }
-    //Needs to be turned into a function that is checked on update
     void Update()
     {
+        UpdateDoorsOnBossRoom();
+    }
+    public void UpdateDoorsOnBossRoom(){
+        foreach (var boss in bossList)
+        {
+            var dest = boss.GetComponent<AIDestinationSetter>();
+            if(dest.CanSeePlayer() == true){
+                Debug.Log("Player seen");
+                foreach (var bossDoors in bossDoorList)
+                {
+                    bossDoors.active = true;
+                }
+            }
+        } 
+    }
+    public void UpdateDoorsOnEnemyRooms(){
         for (int i = 0; i < enemyInRoomListList.Count; i++)
         {   
             for (int j = 0; j < enemyInRoomListList[i].Count; j++)

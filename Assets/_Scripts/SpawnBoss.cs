@@ -6,6 +6,7 @@ public class SpawnBoss : MonoBehaviour
 {   
     public RoomFirstDungeonGenerator roomFirstDungeonGenerator;
     public GameObject bossPrefab;
+    public List<GameObject> bossList;
     public Vector3 spawnRoom;
     public BoundsInt endRoom;
     void Start(){
@@ -13,5 +14,9 @@ public class SpawnBoss : MonoBehaviour
         spawnRoom = endRoom.center;
         GameObject a = Instantiate(bossPrefab) as GameObject;
         a.transform.position = new Vector3(spawnRoom.x, spawnRoom.y, 0);
+        bossList.Add(a);
+    }
+    public List<GameObject> GetBossList(){
+        return bossList;
     }
 }

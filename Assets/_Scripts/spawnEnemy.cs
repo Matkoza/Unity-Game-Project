@@ -14,14 +14,12 @@ public class spawnEnemy : MonoBehaviour
     public List<List<GameObject>> enemyInRoomListList;
     public List<BoundsInt> roomBoundsList;
     public GameObject enemyPrefab, bombEnemyPrefab;
-    public Transform player;
     public spawnDoors doors;
     [SerializeField]
     public int enemyCap = 10;
     public int deadEnemies, offset;
     void Start()
     {   
-        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         enemyInRoomListList = new List<List<GameObject>>();
         spawnRooms = roomFirstDungeonGenerator.GetAllSpawnList();
         roomBoundsList = roomFirstDungeonGenerator.GetRoomBoundsList();
@@ -35,13 +33,13 @@ public class spawnEnemy : MonoBehaviour
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
                     if (spawnRooms.Contains(position) && corridorDoors.Contains(position) == false && corridorDoors.Contains(new Vector2Int(position.x - 1, position.y -1)) == false && corridorDoors.Contains(new Vector2Int(position.x + 1, position.y + 1)) == false){
                         roomFloor.Add(position);
-                        //spawnRooms.Remove(position);
                     }
                 }
             }
 
             List<GameObject> enemyList = new List<GameObject>();
             List<GameObject> bombEnemyList = new List<GameObject>();
+
             for (int i = 0; i < enemyCap; i++)
             {   
                 var randomPos = roomFloor[Random.Range(0, roomFloor.Count)];
@@ -59,9 +57,6 @@ public class spawnEnemy : MonoBehaviour
                     roomFloor.Remove(randomPos);
                     //enemyList.Add(a);
                 }
-                
-                
-                
             }
             enemyInRoomListList.Add(enemyList); 
         }
